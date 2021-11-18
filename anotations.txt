@@ -1,0 +1,13 @@
+
+
+## Maps ##
+yarn add react-native-maps
+
+adicionar a chave API_KEY do google maps no AndroidManifest.xml tag application
+
+executar o comando de link para configurar automaticamente no projeto
+npx react-native link react-native-maps
+
+Configuração Gradle renderizar mapa do aparelho
+https://medium.com/@tadeumx1/utilizando-mapas-no-react-native-817c4f4de6f7
+
