@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {Image, SafeAreaView} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {FAB} from 'react-native-paper';
 import {homeStyle} from './home.style';
@@ -18,8 +18,19 @@ export const HomeScreen = () => {
         }}>
         <Marker
           description="Delivery person 1"
-          coordinate={{latitude: -3.723, longitude: -38.515}}
-        />
+          coordinate={{latitude: -3.723, longitude: -38.515}}>
+          <Image source={require('../../../assets/bike.png')} />
+        </Marker>
+        <Marker
+          description="Delivery person 1"
+          coordinate={{latitude: -3.74, longitude: -38.515}}>
+          <Image source={require('../../../assets/bike.png')} />
+        </Marker>
+        <Marker
+          description="Delivery person 1"
+          coordinate={{latitude: -3.727, longitude: -38.515}}>
+          <Image source={require('../../../assets/bike.png')} />
+        </Marker>
       </MapView>
       <FAB icon="plus" style={homeStyle.fab} />
     </SafeAreaView>
