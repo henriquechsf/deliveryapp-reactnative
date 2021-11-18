@@ -1,11 +1,19 @@
 import React from 'react';
 import {Image, SafeAreaView, View} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {Button, Card, FAB, IconButton, List} from 'react-native-paper';
+import {
+  ActivityIndicator,
+  Button,
+  Card,
+  FAB,
+  IconButton,
+  List,
+  Title,
+} from 'react-native-paper';
 import {homeStyle} from './home.style';
 
 export const HomeScreen = () => {
-  const state: number = 2;
+  const state: number = 3;
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -50,6 +58,9 @@ export const HomeScreen = () => {
           </>
         ) : null}
       </MapView>
+
+      {state === 1 ? <FAB icon="plus" style={homeStyle.fab} /> : null}
+
       {state === 2 ? (
         <Card>
           <Card.Content>
@@ -74,7 +85,16 @@ export const HomeScreen = () => {
           </Card.Content>
         </Card>
       ) : null}
-      {state === 1 ? <FAB icon="plus" style={homeStyle.fab} /> : null}
+
+      {state === 3 ? (
+        <View style={homeStyle.flexCenterColumn}>
+          <ActivityIndicator animating={true} color={homeStyle.icon.color} />
+          <Title style={homeStyle.title}>Procurando por um entregador...</Title>
+          <Button style={homeStyle.cancelDeliveryButton} mode="contained">
+            Cancelar
+          </Button>
+        </View>
+      ) : null}
     </SafeAreaView>
   );
 };
