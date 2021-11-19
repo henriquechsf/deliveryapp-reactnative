@@ -1,24 +1,19 @@
 import React from 'react';
-import {Image, SafeAreaView, View} from 'react-native';
-import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {
-  ActivityIndicator,
-  Button,
-  Card,
-  FAB,
-  IconButton,
-  List,
-  Title,
-} from 'react-native-paper';
+import {Image, SafeAreaView} from 'react-native';
+import MapView, {Marker} from 'react-native-maps';
+import {FAB} from 'react-native-paper';
+import {ConfirmDeliveryCardComponent} from '../../components/confirm-delivery-card/confirm-delivery-card.component';
+import {HeaderComponent} from '../../components/header/header.components';
+import {SearchingDeliveryComponent} from '../../components/serching-delivery/searching-delivery.component';
 import {homeStyle} from './home.style';
 
 export const HomeScreen = () => {
-  const state: number = 3;
+  const state: number = 1;
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={homeStyle.flex}>
+      <HeaderComponent title="Delivery App" />
       <MapView
-        //provider={PROVIDER_GOOGLE}
         style={homeStyle.flex}
         initialRegion={{
           latitude: -3.722,
@@ -61,40 +56,9 @@ export const HomeScreen = () => {
 
       {state === 1 ? <FAB icon="plus" style={homeStyle.fab} /> : null}
 
-      {state === 2 ? (
-        <Card>
-          <Card.Content>
-            <List.Item
-              title="$ 15,00"
-              description="Preço total da entrega"
-              left={() => (
-                <IconButton
-                  icon="bike"
-                  size={30}
-                  style={homeStyle.icon}
-                  color={homeStyle.icon.color}
-                />
-              )}
-              right={() => (
-                <View>
-                  <Button style={homeStyle.cancelButton}>Cancelar</Button>
-                  <Button mode="contained">Confirmar</Button>
-                </View>
-              )}
-            />
-          </Card.Content>
-        </Card>
-      ) : null}
+      {state === 2 ? <ConfirmDeliveryCardComponent /> : null}
 
-      {state === 3 ? (
-        <View style={homeStyle.flexCenterColumn}>
-          <ActivityIndicator animating={true} color={homeStyle.icon.color} />
-          <Title style={homeStyle.title}>Procurando por um entregador...</Title>
-          <Button style={homeStyle.cancelDeliveryButton} mode="contained">
-            Cancelar
-          </Button>
-        </View>
-      ) : null}
+      {state === 3 ? <SearchingDeliveryComponent /> : null}
     </SafeAreaView>
   );
 };
